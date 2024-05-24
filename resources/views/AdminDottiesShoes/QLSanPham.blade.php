@@ -34,8 +34,8 @@
                             <td>{{++$i}}</td>
                             <td><img src="/WebsiteDottiesShoes/img/Ues/{{$products->HinhAnh}}" style="width:90px" ></td>
                             <td>{{$products->TenSP}}</td>
-                            <td>{{$products->MaLoai}}</td>
-                            <td>{{$products->MaNCC}}</td>
+                            <td>{{$products->TenLoai}}</td>
+                            <td>{{$products->TenNCC}}</td>
                             <td>{{$products->MauSac}}</td>
                             <td>{{number_format($products->DonGia)}} VND</td>
                             <td>{{$products->SoLuong}}</td>

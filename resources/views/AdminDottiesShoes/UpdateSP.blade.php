@@ -19,7 +19,7 @@
                     <select class="form-control" name="ID" id="ID">
                         <option value="" name="ID" selected> -- Chọn loại sản phẩm --</option>
                         @foreach($loaisanpham as $loaisanphams)
-                        <option name="ID" value="{{ $loaisanphams->ID }}" >{{ $loaisanphams->TenLoai }}</option>
+                        <option name="ID" value="{{ $loaisanphams->MaLoai }}" >{{ $loaisanphams->TenLoai }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -28,7 +28,7 @@
                     <select class="form-control" name="ID" id="ID">
                         <option value="" name="ID" selected> -- Chọn nhà sản xuất --</option>
                         @foreach($nhasanxuat as $nhasanxuats)
-                        <option name="ID" value="{{ $nhasanxuats->ID }}" >{{ $nhasanxuats->TenNCC }}</option>
+                        <option name="ID" value="{{ $nhasanxuats->MaNCC }}" >{{ $nhasanxuats->TenNCC }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -43,10 +43,6 @@
                 <div class="form-group">
                     <label for="DonGia">Đơn Giá :</label>
                     <input type="number"  class="form-control" name="DonGia" id="DonGia" value="{{$product -> DonGia}}">
-                </div>
-                <div class="form-group">
-                    <label for="GiaSale">Giá Sale :</label>
-                    <input type="number"  class="form-control" name="GiaSale" id="GiaSale" value="{{$product -> GiaSale}}">
                 </div>
                 <div class="form-group">
                     <label for="GhiChu">Ghi Chú :</label>

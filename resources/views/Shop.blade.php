@@ -229,7 +229,7 @@
                                     </div>
                                     <p>{{number_format($products->DonGia)}} VND</p>
                                     <div class="product__color__select">
-                                        <label for="pc-4">
+                                        <label for="pc-4">  
                                             <input type="radio" id="pc-4">
                                         </label>
                                         <label class="active black" for="pc-5">

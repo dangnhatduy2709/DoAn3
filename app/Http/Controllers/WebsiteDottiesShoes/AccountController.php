@@ -21,7 +21,7 @@ class AccountController extends Controller
         ];
         $remember = $request -> remember_token;
         if(Auth::attempt($credentials, $remember)){
-            return redirect('/');
+            return redirect('/TrangChu');
         }else{
             session()->flash('Fail','Đăng Nhập Thất Bại');
             return redirect('Login');

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminDottiesShoes\DonHangController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(App\Http\Controllers\WebsiteDottiesShoes\AccountController::class)->group(function(){
@@ -93,7 +94,6 @@ Route::controller(App\Http\Controllers\AdminDottiesShoes\SanPhamController::clas
 
     Route::post('/Admin/QLSanPham/UpdateSP/{ID}','UpdateSP')->name('UpdateSP');
 
-    Route::get('/Admin/QLSanPham/UpdateSP/{ID}','UpdateSP')->name('UpdateSP');
 
     Route::delete('/Admin/QLSanPham/destroy/{iding}','destroy')->name('deletesp');
 });
@@ -102,6 +102,8 @@ Route::controller(App\Http\Controllers\AdminDottiesShoes\DonHangController::clas
     Route::get('/Admin/QLDonHang','QLDonHang')->name('QLDonHang');
     
     Route::get('/Admin/QLDonHang/CTDonHang/{ID}','CTDonHang')->name('CTDonHang');
+    
+    Route::delete('/orders/{id}', [DonHangController::class, 'destroy'])->name('deleteOrder');
 });
 Route::controller(App\Http\Controllers\AdminDottiesShoes\KhachHangController::class)->group(function(){
 

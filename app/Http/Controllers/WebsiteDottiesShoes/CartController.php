@@ -14,38 +14,33 @@ use Darryldecode\Cart\Cart;
 class CartController extends Controller
 {   
     public function ShopCart(){
-    $cartItems = \Cart::getContent();
-    $idSP = DB::table('sanpham')
-    ->where('ID',Session::get('idSP'))
-    ->select('sanpham.*')
-    ->get();
-    return view('ShopCart', ['cartItems' => $cartItems]);
-}
-public function AddCart(Request $request)
-{
-    // Nếu dữ liệu hợp lệ, thêm vào giỏ hàng
-    // dd($request -> all());
-    \Cart::add([
-        'id' => $request->id,
-        'name' => $request->TenSP,
-        'price' => $request->DonGia,
-        'quantity' => $request->SoLuong,
-        'options' => array(
-            'image' => $request->HinhAnh,
-        )
-    ]);
-    Session::put('idSP',$request->id);
-    $img = DB::table('sanpham')->where('ID',Session::get('idSP'))->get();
-    $i[] = null;
-    foreach($img as $i){
-        $i = $i->HinhAnh;
+        $cartItems = \Cart::getContent();
+        return view('ShopCart', ['cartItems' => $cartItems]);
     }
-    Session::put('img',$i);
-    // dd($i);
-    // Flash message và chuyển hướng đến trang giỏ hàng
-    session()->flash('success', 'Bạn đã thêm thành công vào giỏ hàng!');
-    return redirect()->route('ShopCart')->with('i',$i);
-}
+    public function AddCart(Request $request)
+    {
+        \Cart::add([
+            'id' => $request->id,
+            'name' => $request->TenSP,
+            'price' => $request->DonGia,
+            'quantity' => $request->SoLuong,
+            'attributes' => array(
+                'image' => $request->HinhAnh,
+            )
+        ]);
+        // Session::put('idSP',$request->id);
+        // $img = DB::table('sanpham')->where('ID',Session::get('idSP'))->get();
+        // $i[] = null;
+        // foreach($img as $i){
+        //     $i = $i->HinhAnh;
+        // }
+        // Session::put('img',$i);
+        // // dd($i);
+        // Flash message và chuyển hướng đến trang giỏ hàng
+        $cartItems = \Cart::getContent();
+        session()->flash('success', 'Bạn đã thêm thành công vào giỏ hàng!');
+        return redirect()->route('ShopCart');
+    }
 
     public function removeCart(Request $request)
     {

@@ -7,14 +7,19 @@ use App\Models\LoaiSanPham;
 use App\Models\NhaCungCap;
 use Illuminate\Http\Request;
 use App\Models\SanPham;
+use Illuminate\Support\Facades\DB;
 
 class SanPhamController extends Controller
 {
     public function QLSanPham()
     {
-        $product = SanPham::paginate(50);
-        $nhacungcap = NhaCungCap::all();
-        return view('/AdminDottiesShoes/QLSanPham', compact('product','nhacungcap'))->with('i',(request()->input('page',1)-1)*5);
+        $product = DB::table('sanpham')
+            ->join('loaisanpham', 'sanpham.MaLoai', '=' ,'loaisanpham.MaLoai')
+            ->join('nhacungcap', 'sanpham.MaNCC', '=', 'nhacungcap.MaNCC')
+            ->select('sanpham.*', 'nhacungcap.TenNCC', 'loaisanpham.TenLoai')
+            ->paginate(50);
+        
+        return view('/AdminDottiesShoes/QLSanPham', compact('product'))->with('i',(request()->input('page',1)-1)*5);
     }
 
     public function CreateSP()
@@ -28,12 +33,11 @@ class SanPhamController extends Controller
     {
         $sp = new SanPham();
         $sp->HinhAnh = $request->input('HinhAnh');
-        $sp->MaLoai = $request->input('ID');
-        $sp->MaNCC = $request->input('ID');
+        $sp->MaLoai = $request->input('MaLoai');
+        $sp->MaNCC = $request->input('MaNCC');
         $sp->TenSP = $request->input('TenSP');
         $sp->MauSac = $request->input('MauSac');
         $sp->DonGia = $request->input('DonGia');
-        $sp->GiaSale = $request->input('GiaSale');
         $sp->GhiChu = $request->input('GhiChu');
         $sp->SoLuong = $request->input('SoLuong');
         $sp->KichThuoc = $request->input('KichThuoc');
@@ -47,33 +51,36 @@ class SanPhamController extends Controller
         //
     }
 
-    public function EditSP($ID)
+    public function EditSP(  $ID)
     {
         $nhasanxuat = NhaCungCap::all();
         $loaisanpham = LoaiSanPham::all();
-        $product = SanPham::where('ID', $ID)->first();
-        //  dd($product);
+        $product = SanPham::find($ID);
+        //   dd($loaisanpham);
         return view('/AdminDottiesShoes/UpdateSP', compact('product','loaisanpham','nhasanxuat'));
     }
 
-    public function UpdateSP(Request $request, $ID)
+    public function UpdateSP(Request $request,  $ID)
     {
+        $input = $request -> all();
+        $sp = SanPham::find($ID);
+        $sp->HinhAnh = $request->input('HinhAnh');
+        $sp->MaLoai = $request->input('MaLoai');
+        $sp->MaNCC = $request->input('MaNCC');
+        $sp->TenSP = $request->input('TenSP');
+        $sp->MauSac = $request->input('MauSac');
+        $sp->DonGia = $request->input('DonGia');
+        $sp->GhiChu = $request->input('GhiChu');
+        $sp->SoLuong = $request->input('SoLuong');
+        $sp->KichThuoc = $request->input('KichThuoc');
+        $sp->save();
         
-        $product                = SanPham::find($ID);
-        $product->HinhAnh = $request->input('HinhAnh');
-        $product->MaLoai = $request->input('ID');
-        $product->MaNCC = $request->input('ID');
-        $product->TenSP = $request->input('TenSP');
-        $product->MauSac = $request->input('MauSac');
-        $product->DonGia = $request->input('DonGia');
-        $product->GiaSale = $request->input('GiaSale');
-        $product->GhiChu = $request->input('GhiChu');
-        $product->SoLuong = $request->input('SoLuong');
-        $product->KichThuoc = $request->input('KichThuoc');
-        if( $product->save() ) {
-            return redirect()->route('QLSanPham')->with('ThongBao', 'Cập Nhật Sản Phẩm Thành Công');
-        }
+        // dd($request->all());
+
+        return redirect()-> route ('QLSanPham');
+
     }
+        
     public function destroy(string $iding)
     {
         $product = SanPham::where('ID', $iding)->delete();

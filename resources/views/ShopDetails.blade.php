@@ -123,6 +123,7 @@
                                     <input type="hidden" name="id" value="{{$product -> ID}}">
                                     <input type="hidden" name="TenSP" value="{{$product -> TenSP}}">
                                     <input type="hidden" name="DonGia" value="{{$product -> DonGia}}">
+                                    <input type="hidden" name="HinhAnh" value="{{$product -> HinhAnh}}">
                                     <input type="hidden" name="SoLuong" value="1">
                                     <button class="home-product-btn">
                                         <!-- <i class="home-product-btn-icon fa-solid fa-cart-plus"></i> -->

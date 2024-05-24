@@ -39,7 +39,14 @@
                             <td>
                                 <a href=""><i class="text-warning fa-solid fa-pen-to-square"></i></a>
                                 <a href="{{ route('CTDonHang', $hoadons->id)}}"><i class="fa-solid fa-circle-info"></i></a>
-                                <a href=""><i class="text-danger fa-solid fa-trash"></i></a>
+                                <form action="{{ route('deleteOrder', $hoadons->id) }}" method="POST" style="display:inline-block;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" onclick="return confirm('{{ __('Bạn có chắc chắn muốn xóa không?') }}')" style="border: none; background: none; padding: 0;">
+                                        <i class="text-danger fa-solid fa-trash"></i>
+                                        </button>
+                                </form>
+
                             </td>
                         </tr>
                         @endforeach

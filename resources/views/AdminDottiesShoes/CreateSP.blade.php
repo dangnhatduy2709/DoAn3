@@ -45,10 +45,6 @@
                     <input type="number" value="0" class="form-control" name="DonGia" id="DonGia" placeholder="......">
                 </div>
                 <div class="form-group">
-                    <label for="GiaSale">Giá Sale :</label>
-                    <input type="number" value="0" class="form-control" name="GiaSale" id="GiaSale" placeholder="......">
-                </div>
-                <div class="form-group">
                     <label for="GhiChu">Ghi Chú :</label>
                     <input type="text" class="form-control" name="GhiChu" id="GhiChu" placeholder="......">
                 </div>

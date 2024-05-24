@@ -50,9 +50,10 @@
                         @foreach($cartItems as $item)
                             <tr>
                                 <td >
-                                <div style="text-align: center;">
-                                    <img  src="/WebsiteDottiesShoes/img/<?php echo Session::get('img')?>" alt="" style="width: 120px;margin-right:40px;">
-                                    </td>
+                                    <div style="text-align: center;">
+                                        <img src="/upload/{{$item->attributes->image}}" alt="" style="width: 120px;margin-right:40px;">
+                                    </div>
+                                </td>
                                 <td>       
                                     <span class="spn-title">{{$item -> name}}</span>
                                 </td>

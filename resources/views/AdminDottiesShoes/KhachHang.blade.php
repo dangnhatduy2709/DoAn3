@@ -19,7 +19,7 @@
                             <th>Địa Chỉ</th>
                             <th>Email</th>
                             <th>Số Điện Thoại</th>
-                            <th></th>
+                            <th>Thao Tác</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -30,7 +30,14 @@
                                 <td>{{$khachhangs -> DiaChi}}</td>
                                 <td>{{$khachhangs -> Email}}</td>
                                 <td>{{$khachhangs -> SoDT}}</td>
-                                <td></td>
+                                <td>
+                                <form action="{{ route('deletesp',$khachhangs->ID)}}"  method="post">
+                                    <a href="{{ route('EditSP',['ID'=>$khachhangs->ID])}}"><i class="text-warning fa-solid fa-edit"></i></a>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" style="border: none; outline: none"><i class="text-danger fa-solid fa-trash"></i></button>
+                                </form>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

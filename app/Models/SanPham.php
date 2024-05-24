@@ -10,13 +10,14 @@ use App\Models\NhaCungCap;
 class SanPham extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'ID'; // Sửa từ $primarykey thành $primaryKey
     protected $table = 'sanpham';
-    protected $fillable = ['ID', 'HinhAnh', 'MaLoai', 'MaNCC', 'TenSP', 'MauSac', 'DonGia','GiaSale','GhiChu','SoLuong','KichThuoc'];
+    protected $fillable = ['ID', 'HinhAnh', 'MaLoai', 'MaNCC', 'TenSP', 'MauSac', 'DonGia', 'GhiChu', 'SoLuong', 'KichThuoc']; // Sửa từ $filliable thành $fillable
     public function LoaiSanPham(){
-        return $this->belongsTo (LoaiSanPham::class,'MaLoai','ID');
+        return $this->belongsTo (LoaiSanPham::class,'MaLoai');
     }
     public function NhaCungCap(){
-        return $this->belongsTo (NhaCungCap::class,'MaNCC','ID');
+        return $this->belongsTo (NhaCungCap::class,'MaNCC');
     }
     public function ChiTietAnhSP(){
         return $this->hasMany('App\Models\ChiTietAnhSP');
