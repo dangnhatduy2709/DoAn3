@@ -17,7 +17,15 @@ class SanPham extends Model
         return $this->belongsTo (LoaiSanPham::class,'MaLoai');
     }
     public function NhaCungCap(){
-        return $this->belongsTo (NhaCungCap::class,'MaNCC');
+        return $this->belongsTo (NhaCungCap::class,'id');
+    }
+    public function order_details()
+    {
+        return $this->hasMany(order_details::class, 'masanpham');
+    }
+    public function chitiethoadonban()
+    {
+        return $this->hasMany(ChiTietHoaDonBan::class, 'masanpham');
     }
     public function ChiTietAnhSP(){
         return $this->hasMany('App\Models\ChiTietAnhSP');

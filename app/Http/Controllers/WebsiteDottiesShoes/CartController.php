@@ -28,15 +28,6 @@ class CartController extends Controller
                 'image' => $request->HinhAnh,
             )
         ]);
-        // Session::put('idSP',$request->id);
-        // $img = DB::table('sanpham')->where('ID',Session::get('idSP'))->get();
-        // $i[] = null;
-        // foreach($img as $i){
-        //     $i = $i->HinhAnh;
-        // }
-        // Session::put('img',$i);
-        // // dd($i);
-        // Flash message và chuyển hướng đến trang giỏ hàng
         $cartItems = \Cart::getContent();
         session()->flash('success', 'Bạn đã thêm thành công vào giỏ hàng!');
         return redirect()->route('ShopCart');
@@ -82,3 +73,4 @@ class CartController extends Controller
 
 }
 
+ 

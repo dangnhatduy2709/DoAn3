@@ -9,10 +9,22 @@ use App\Models\SanPham;
 class order_details extends Model
 {
     use HasFactory;
-    protected $table = 'order_detials';
-    protected $fillable = ['id', 'order_id', 'product_id', 'qty', 'amount', 'total'];
+    protected $table = 'order_details';
+    protected $fillable  = [
+        'id',
+        'madonhang',
+        'masanpham',
+        'soluong',
+        'gia',
+    ];
 
-    public function SanPham(){
-        return $this->hasOne(SanPham::class,'ID');
+    public function order()
+    {
+        return $this->belongsTo(order::class, 'madonhang');
+    }
+
+    public function sanpham()
+    {
+        return $this->belongsTo(SanPham::class, 'masanpham');
     }
 }

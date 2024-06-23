@@ -28,7 +28,7 @@
                     <select class="form-control" name="ID" id="ID">
                         <option value="" name="ID" selected> -- Chọn nhà sản xuất --</option>
                         @foreach($nhasanxuat as $nhasanxuats)
-                        <option name="ID" value="{{ $nhasanxuats->ID }}" >{{ $nhasanxuats->TenNCC }}</option>
+                        <option name="ID" value="{{ $nhasanxuats->ID }}" >{{ $nhasanxuats->tennhacungcap }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -48,10 +48,10 @@
                     <label for="GhiChu">Ghi Chú :</label>
                     <input type="text" class="form-control" name="GhiChu" id="GhiChu" placeholder="......">
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="SoLuong">Số Lượng :</label>
                     <input type="number" value="0" class="form-control" name="SoLuong" id="SoLuong" placeholder="......">
-                </div>
+                </div> -->
                 <div class="form-group">
                     <label for="KichThuoc">Kích Thước :</label>
                     <input type="text" class="form-control" name="KichThuoc" id="KichThuoc" placeholder="......">

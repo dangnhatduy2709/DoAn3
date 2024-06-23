@@ -32,6 +32,8 @@ Route::controller(App\Http\Controllers\WebsiteDottiesShoes\IndexController::clas
     Route::get('/About','About')->name('About');
 
     Route::get('/Contact','Contact')->name('Contact');
+
+    Route::get('/CheckOut','CheckOut')->name('CheckOut');
 });
 
 Route::controller(App\Http\Controllers\WebsiteDottiesShoes\ShopContronller::class)->group(function(){
@@ -63,8 +65,9 @@ Route::controller(App\Http\Controllers\WebsiteDottiesShoes\CheckoutController::c
 
     Route::get('/ThanhToan','ThanhToan')->name('ThanhToan');
     
-    Route::post('/AddCheckOut','AddCheckOut')->name('AddCheckOut');
-    Route::post('/ThanhToan', 'AddCheckOut')->name('ThanhToan');
+    Route::get('/checkout', 'checkout') -> name('checkout');
+    Route::post('/checkoutpost', 'checkoutpost') -> name('checkout.checkoutpost');
+    Route::post('/ThanhToan', 'checkoutpost')->name('ThanhToan');
 
 });
 
@@ -99,13 +102,54 @@ Route::controller(App\Http\Controllers\AdminDottiesShoes\SanPhamController::clas
 });
 Route::controller(App\Http\Controllers\AdminDottiesShoes\DonHangController::class)->group(function(){
 
-    Route::get('/Admin/QLDonHang','QLDonHang')->name('QLDonHang');
+    Route::get('/admin/donhang/index', 'index') -> name('admin.donhang.index');
+
+    Route::get('/admin/donhang/chitietdonhang/{id}', 'OderDetail') -> name('admin.donhang.chitietdonhang');
+
+    Route::get('/admin/donhang/confirm', 'OderConfirm') -> name('admin.donhang.donhangdaxacnhan');
+
+    Route::get('/admin/donhang/unconfirm', 'OderUnConfirm') -> name('admin.donhang.donhangchuaxacnhan');
+
+    Route::post('/admin/donhang/confirmcheckout/{id}', 'ConfirmCheckout') -> name('admin.donhang.ConfirmCheckout');
+    Route::post('/admin/donhang/CancelCheckout/{id}', 'CancelCheckout') -> name('admin.donhang.CancelCheckout');  
     
-    Route::get('/Admin/QLDonHang/CTDonHang/{ID}','CTDonHang')->name('CTDonHang');
-    
-    Route::delete('/orders/{id}', [DonHangController::class, 'destroy'])->name('deleteOrder');
+    Route::get('/admin/donhang/viewoder/{id}', 'Viewoder') -> name('admin.donhang.viewoder');
+
 });
 Route::controller(App\Http\Controllers\AdminDottiesShoes\KhachHangController::class)->group(function(){
 
     Route::get('/Admin/KhachHang','KhachHang')->name('KhachHang');
+});
+Route::controller(App\Http\Controllers\AdminDottiesShoes\HoaDonBanController::class) -> group(function(){
+    Route::get('/admin/hoadonban/index', 'index') -> name('admin.hoadonban.index');
+    Route::get('/admin/hoadonban/detail/{ID}', 'detailhoadonban') -> name('admin.hoadonban.detail');
+    
+});
+Route::controller(App\Http\Controllers\AdminDottiesShoes\NhapHangController::class) -> group(function(){
+    Route::get('/admin/hoadonnhap/index', 'index') -> name('admin.hoadonnhap.index');
+
+    Route::get('/admin/hoadonnhap/create', 'create') -> name('admin.hoadonnhap.create');
+    Route::post('/admin/hoadonnhap/store', 'store') -> name('admin.hoadonnhap.store');
+
+    Route::get('/admin/hoadonnhap/details/{id}', 'details') -> name('admin.hoadonnhap.details') ;
+
+
+});
+
+Route::controller(App\Http\Controllers\AdminDottiesShoes\KhoController::class) -> group(function(){
+    Route::get('/admin/kho/index', 'index') -> name('admin.kho.index');
+
+});
+Route::controller(App\Http\Controllers\AdminDottiesShoes\ThongKeController::class) -> group(function(){
+    Route::get('/admin/thongke/index', 'index') -> name('admin.thongke.index');
+    
+    Route::post('/admin/thongke/theongay', 'theongay') ->name('admin.thongke.theongay');
+
+    Route::get('/admin/thongke/theothang', 'theothangget') ->name('admin.thongke.theothangget');
+
+    Route::post('/admin/thongke/theothang', 'theothang') ->name('admin.thongke.theothang');
+
+    Route::get('/admin/thongke/khachhang', 'khachhang') ->name('admin.thongke.khachhang');
+
+
 });

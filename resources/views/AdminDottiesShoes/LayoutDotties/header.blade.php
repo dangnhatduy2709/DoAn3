@@ -43,12 +43,67 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('QLDonHang')}}">Đơn Hàng</a>
-                <a class="collapse-item" href="HoaDon.html">Hóa Đơn Bán</a>
-                <a class="collapse-item" href="HoaDon.html">Hóa Đơn Nhập</a>
+            <a class="collapse-item" href="{{route ('admin.donhang.index')}}">Danh sách đơn hàng</a>
+            <a class="collapse-item" href="{{route ('admin.donhang.donhangdaxacnhan')}}">Đơn hàng đã xác nhận</a>
+            <a class="collapse-item" href="{{route ('admin.donhang.donhangchuaxacnhan')}}">Đơn hàng chưa xác nhận</a>
             </div>
         </div>
     </li>
+    <li class="nav-item ">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsehdb" aria-expanded="true"
+          aria-controls="collapsehdb">
+          <i class="fas fa-fw fa-columns"></i>
+          <span>Quản lý hóa đơn bán</span>
+        </a>
+        <div id="collapsehdb" class="collapse " aria-labelledby="headingPage" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <!-- <h6 class="collapse-header">Example Pages</h6> -->
+            <a class="collapse-item" href="{{route ('admin.hoadonban.index')}}">Danh sách hóa đơn bán</a>       
+            <!-- <a class="collapse-item active" href="blank.html">Blank Page</a> -->
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
+          aria-controls="collapseTable">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Quản lý nhập hàng</span>
+        </a>
+        <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{ route ('admin.hoadonnhap.index') }}">Danh sách nhập hàng</a>
+            <a class="collapse-item" href="{{ route ('admin.hoadonnhap.create') }}">Thêm hóa đơn nhập</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseKho" aria-expanded="true"
+          aria-controls="collapseKho">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Quản lý kho</span>
+        </a>
+        <div id="collapseKho" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="{{ route ('admin.kho.index') }}">Danh sách kho</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsethongke" aria-expanded="true"
+          aria-controls="collapsethongke">
+          <i class="fas fa-fw fa-columns"></i>
+          <span>Thống kê</span>
+        </a>
+        <div id="collapsethongke" class="collapse " aria-labelledby="headingPage" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <!-- <h6 class="collapse-header">Example Pages</h6> -->
+            <a class="collapse-item" href="{{ route ('admin.thongke.index') }}">Thống kê theo ngày</a>
+            <a class="collapse-item" href="{{ route ('admin.thongke.theothang') }}">Thống kê theo tháng</a>
+            <a class="collapse-item" href="{{ route ('admin.thongke.khachhang') }}">Thống kê khách hàng</a>
+            <!-- <a class="collapse-item active" href="blank.html">Blank Page</a> -->
+          </div>
+        </div>
+      </li>
     <!-- Divider -->
     <hr class="sidebar-divider">
 

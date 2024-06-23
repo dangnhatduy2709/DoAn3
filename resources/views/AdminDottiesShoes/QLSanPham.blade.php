@@ -24,21 +24,20 @@
                             <th>Nhà Sản Xuất</th>
                             <th>Màu Sắc</th>
                             <th>Đơn Giá</th>
-                            <th>Số Lượng</th>
                             <th style="width: 30.3333px;">Thao Tác</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @php $i =1;@endphp
                         @foreach($product as $products)
                         <tr>
-                            <td>{{++$i}}</td>
+                            <td>{{$i++}}</td>
                             <td><img src="/WebsiteDottiesShoes/img/Ues/{{$products->HinhAnh}}" style="width:90px" ></td>
                             <td>{{$products->TenSP}}</td>
                             <td>{{$products->TenLoai}}</td>
-                            <td>{{$products->TenNCC}}</td>
+                            <td>{{$products->tennhacungcap}}</td>
                             <td>{{$products->MauSac}}</td>
-                            <td>{{number_format($products->DonGia)}} VND</td>
-                            <td>{{$products->SoLuong}}</td>
+                            <td>{{number_format($products->DonGia)}} VND</td>                           
                             <td>
                                 <form action="{{ route('deletesp',$products->ID)}}"  method="post">
                                     <a href="{{ route('EditSP',['ID'=>$products->ID])}}"><i class="text-warning fa-solid fa-edit"></i></a>

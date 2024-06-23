@@ -9,7 +9,21 @@ class HoaDonBan extends Model
 {
     use HasFactory;
     protected $table = 'hoadonban';
+    protected $fillable  = [
+        'id',
+        'makhachhang',
+        'thanhtien',
+    ];
 
-    protected $fillable = ['ID', 'MaKH', 'NgayDat', 'SDT', 'DiaChi', 'TrangThai', 'GhiChu'];
+    public function chitiethoadonban()
+    {
+        return $this->hasMany(ChiTietHoaDonBan::class, 'mahoadonban');
+    }
+
+    public function khachhang()
+    {
+        return $this->belongsTo(KhachHang::class, 'makhachhang');
+    }
+
 
 }

@@ -8,6 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class KhachHang extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'id';
     protected $table = 'khachhang';
-    protected $fillable = ['HoTen', 'DiaChi','Email','SoDT','Password'];
+    public $timestamps = false;
+    protected $fillable = ['id','HoTen', 'DiaChi','Email','SoDT','TaiKhoan','MatKhau'];
+    public function order()
+    {
+        return $this->hasMany(order::class, 'makhachhang');
+    }
 }
+

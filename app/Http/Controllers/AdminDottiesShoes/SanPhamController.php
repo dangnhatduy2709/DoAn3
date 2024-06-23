@@ -13,13 +13,14 @@ class SanPhamController extends Controller
 {
     public function QLSanPham()
     {
+        $product = SanPham::all();
         $product = DB::table('sanpham')
             ->join('loaisanpham', 'sanpham.MaLoai', '=' ,'loaisanpham.MaLoai')
-            ->join('nhacungcap', 'sanpham.MaNCC', '=', 'nhacungcap.MaNCC')
-            ->select('sanpham.*', 'nhacungcap.TenNCC', 'loaisanpham.TenLoai')
+            ->join('nhacungcap', 'sanpham.MaNCC', '=', 'nhacungcap.id')
+            ->select('sanpham.*', 'nhacungcap.tennhacungcap', 'loaisanpham.TenLoai')
             ->paginate(50);
-        
-        return view('/AdminDottiesShoes/QLSanPham', compact('product'))->with('i',(request()->input('page',1)-1)*5);
+        // dd($product);
+        return view('/AdminDottiesShoes/QLSanPham', compact('product'));
     }
 
     public function CreateSP()

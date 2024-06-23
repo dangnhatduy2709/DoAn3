@@ -1,0 +1,72 @@
+.checkout__container {
+    max-width: 1000px; /* Điều chỉnh kích thước tối đa của form giỏ hàng */
+    margin: 0 auto; /* Căn giữa form giỏ hàng */
+    .col-lg-8 {
+        -ms-flex: 0 0 66.666667%;
+        flex: 0 0 106.666667%;
+        max-width: 106.666667%;
+    }
+}
+.checkout__order {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd; 
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkout__order h4 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.checkout__product__header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.checkout__product__list {
+    list-style: none;
+    padding: 0;
+}
+
+.checkout__product__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    margin-bottom: 5px;
+}
+
+.checkout__product__item span {
+    flex: 1; /* Cân chỉnh các phần tử con của item */
+    text-align: left; /* Căn văn bản sang trái */
+}
+
+.checkout__order__total {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.site-btn {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.site-btn:hover {
+    background-color: #45a049;
+}
+@media (min-width: 992px) {
+    .col-lg-8 {
+        -ms-flex: 0 0 66.666667%;
+        flex: 0 0 106.666667%;
+        max-width: 106.666667%;
+    }
+}
